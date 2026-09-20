@@ -78,7 +78,7 @@ function CommunityList({ onOpen, onCreate }) {
 }
 
 function CommunityHeader({ setTab, tab }) {
-  return <><div className="community-header"><span className="community-icon large">▰</span><div><h1>Frontend Engineering</h1><p>342 members • 8 channels</p></div><span className="more">⋮</span></div><div className="tabs"><button className={tab === 'overview' ? 'selected' : ''} onClick={() => setTab('overview')}>∿　Overview</button><button className={tab === 'channels' ? 'selected' : ''} onClick={() => setTab('channels')}>#　Channels</button><button className={tab === 'members' ? 'selected' : ''} onClick={() => setTab('members')}>♧　Members</button></div></>
+  return <><div className="community-header"><span className="community-icon large">💻</span><div><h1>Frontend Engineering</h1><p>342 members • 8 channels</p></div><span className="more">⋮</span></div><div className="tabs"><button className={tab === 'overview' ? 'selected' : ''} onClick={() => setTab('overview')}>∿　Overview</button><button className={tab === 'channels' ? 'selected' : ''} onClick={() => setTab('channels')}>#　Channels</button><button className={tab === 'members' ? 'selected' : ''} onClick={() => setTab('members')}>♧　Members</button></div></>
 }
 
 function Overview() {
