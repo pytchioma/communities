@@ -48,9 +48,9 @@ function Icon({ name }) {
     case 'users':
       return <svg {...props}><path d="M9 12.5C10.7 12.5 12.1 11.1 12.1 9.4C12.1 7.7 10.7 6.3 9 6.3C7.3 6.3 5.9 7.7 5.9 9.4C5.9 11.1 7.3 12.5 9 12.5Z" {...common} /><path d="M15.5 9.5C16.6 9.5 17.5 8.6 17.5 7.5C17.5 6.4 16.6 5.5 15.5 5.5C14.4 5.5 13.5 6.4 13.5 7.5" {...common} /><path d="M4 17.5C5 15.8 6.8 14.8 9 14.8C11.2 14.8 13 15.8 14 17.5" {...common} /><path d="M15 17.5C15.4 16.5 16.3 15.7 17.5 15.2" {...common} /></svg>
     case 'folder':
-      return <svg {...props}><path d="M3.5 7.8C3.5 6.7 4.4 5.8 5.5 5.8H9L10.6 7.2H18.5C19.6 7.2 20.5 8.1 20.5 9.2V16.4C20.5 17.5 19.6 18.4 18.5 18.4H5.5C4.4 18.4 3.5 17.5 3.5 16.4V7.8Z" {...common} /></svg>
+      return <svg {...props}><path d="M5 4.5H15L19 8.5V19.5H5V4.5Z" {...common} /><path d="M15 4.5V8.5H19M8 13L10.5 15.5L16 10" {...common} /></svg>
     case 'programs':
-      return <svg {...props}><path d="M6 6.5H18V17.5H6V6.5Z" {...common} /><path d="M9 6.5V4.5H15V6.5" {...common} /><path d="M9 11.5H15M9 14.5H13" {...common} /></svg>
+      return <svg {...props}><path d="M3.5 8L12 4L20.5 8L12 12L3.5 8Z" {...common} /><path d="M6.5 9.5V15.5C9.5 18.2 14.5 18.2 17.5 15.5V9.5M20.5 8V15" {...common} /></svg>
     case 'spark':
       return <svg {...props}><path d="M12 2.8L13.8 8.2L19.2 10L13.8 11.8L12 17.2L10.2 11.8L4.8 10L10.2 8.2L12 2.8Z" {...common} /></svg>
     case 'wallet':
@@ -60,9 +60,9 @@ function Icon({ name }) {
     case 'communities':
       return <svg {...props}><path d="M9 11C10.6569 11 12 9.65685 12 8C12 6.34315 10.6569 5 9 5C7.34315 5 6 6.34315 6 8C6 9.65685 7.34315 11 9 11Z" {...common} /><path d="M16 11C17.1046 11 18 10.1046 18 9C18 7.89543 17.1046 7 16 7C14.8954 7 14 7.89543 14 9C14 10.1046 14.8954 11 16 11Z" {...common} /><path d="M5.5 17.2C6.5 15.8 7.9 15 9.5 15C11.1 15 12.5 15.8 13.5 17.2" {...common} /><path d="M13.8 17.2C14.3 16.3 15.2 15.6 16.4 15.3" {...common} /></svg>
     case 'share':
-      return <svg {...props}><path d="M8 12L16 6" {...common} /><path d="M8 12L16 18" {...common} /><circle cx="5" cy="12" r="2" {...common} /><circle cx="19" cy="6" r="2" {...common} /><circle cx="19" cy="18" r="2" {...common} /></svg>
+      return <svg {...props}><path d="M4 7H17M4 7L8 3M4 7L8 11M20 17H7M20 17L16 13M20 17L16 21" {...common} /></svg>
     case 'chart':
-      return <svg {...props}><path d="M5 18.5V9.5M11 18.5V5.5M17 18.5V12.5" {...common} /><path d="M3 18.5H21" {...common} /></svg>
+      return <svg {...props}><rect x="4" y="4" width="16" height="16" rx="1.5" {...common} /><path d="M7 16L10 12.5L12.5 15L16.5 9.5" {...common} /><path d="M15 9.5H16.5V11" {...common} /></svg>
     default:
       return null
   }
@@ -98,7 +98,7 @@ function TabIcon({ name }) {
   }
 
   if (name === 'messages') {
-    return <svg className="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 6.5C5 5.7 5.7 5 6.5 5H17.5C18.3 5 19 5.7 19 6.5V14.5C19 15.3 18.3 16 17.5 16H10L6 19V16.5C5.4 16.3 5 15.7 5 15V6.5Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" /></svg>
+    return <svg className="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 6.5C5 5.67 5.67 5 6.5 5H17.5C18.33 5 19 5.67 19 6.5V14.5C19 15.33 18.33 16 17.5 16H10L6 19V16.5C5.45 16.28 5 15.74 5 15V6.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
   }
 
   if (name === 'flag') {
@@ -118,8 +118,8 @@ function Overview() {
   return <><div className="stats">{stats.map(([value, label, note, icon, color]) => <div className={`stat ${label === 'Active Channels' ? 'stat-channels' : ''}`} key={label}><div><strong>{value}</strong><span>{label}</span><em className={color}>{note}</em></div><b className={color}><TabIcon name={icon} /></b></div>)}</div><section className="activity"><h2>Recent Activity</h2>{[['J', 'John Doe posted in #general', '2 minutes ago'], ['J', 'Jane Smith joined the Communities', '15 minutes ago'], ['M', 'Mike Johnson posted in #help', '1 hour ago'], ['S', 'Sarah Wilson reacted to a message', '2 hours ago']].map(([initial, text, time]) => <div className="activity-row" key={text}><span className="avatar">{initial}</span><div><strong>{text}</strong><small>{time}</small></div></div>)}</section></>
 }
 
-function Channels({ onCreateChannel }) {
-  return <><div className="section-title"><h2>Channel Management</h2><button className="primary" onClick={onCreateChannel}>#　Create Channel</button></div><div className="table channel-table"><div className="table-head"><span>CHANNEL</span><span>MEMBERS</span><span>MESSAGES</span><span>STATUS</span><span>ACTIONS</span></div>{channelRows.map(([name, description, memberCount, messageCount, active]) => <div className="table-row" key={name}><div><strong>#　{name}</strong><small>{description}</small></div><span>{memberCount}</span><span>{messageCount}</span><span className={`status ${active ? '' : 'inactive'}`}>{active ? 'Active' : 'Inactive'}</span><b>⋮</b></div>)}</div></>
+function Channels({ onCreateChannel, onOpenChannel }) {
+  return <><div className="section-title"><h2>Channel Management</h2><button className="primary" onClick={onCreateChannel}>#　Create Channel</button></div><div className="table channel-table"><div className="table-head"><span>CHANNEL</span><span>MEMBERS</span><span>MESSAGES</span><span>STATUS</span><span>ACTIONS</span></div>{channelRows.map(([name, description, memberCount, messageCount, active]) => <div className={`table-row ${name === 'general' ? 'channel-clickable' : ''}`} key={name} onClick={name === 'general' ? onOpenChannel : undefined}><div><strong>#　{name}</strong><small>{description}</small></div><span>{memberCount}</span><span>{messageCount}</span><span className={`status ${active ? '' : 'inactive'}`}>{active ? 'Active' : 'Inactive'}</span><b>⋮</b></div>)}</div></>
 }
 
 function MemberAvatar({ tone = 'purple' }) {
@@ -230,11 +230,11 @@ function MemberTable({ onManage }) {
 
 function DetailView({ onBack }) {
   const posts = [
-    ['AT', 'Admin Team', '2 hours ago', 'Welcome to TalentCona Community! 🎉 This is your space to connect, learn, and grow together. Please read our community guidelines and introduce yourself!', '12 replies'],
-    ['SC', 'Sarah Chen', '1 hour ago', 'Quick tip for Front-End Development Program beginners: Always use the key prop when rendering lists! It helps Front-End Development Program identify which items have changed.', '6 replies'],
-    ['MR', 'Michael Rodriguez', '45 min ago', 'Just completed my first full-stack project! Thanks to everyone who helped me along the way. The mentorship here is incredible! 🔥', '8 replies'],
-    ['EJ', 'Emily Johnson', '30 min ago', "Does anyone have recommendations for CSS Grid resources? I'm struggling with the gallery layout assignment. Any help would be appreciated! 🙏", '4 replies'],
-    ['DK', 'David Kim', '15 min ago', "Pro tip: Use Front-End Development Program DevTools to debug your components. It's a game changer for understanding component state and props!", '3 replies'],
+    ['AT', 'Admin Team', '2 hours ago', 'Welcome to TalentCona Community! 🎉 This is your space to connect, learn, and grow together. Please read our community guidelines and introduce yourself!', '12 replies', [['❤️', '24'], ['🎉', '18']]],
+    ['SC', 'Sarah Chen', '1 hour ago', 'Quick tip for Front-End Development Program beginners: Always use the key prop when rendering lists! It helps Front-End Development Program identify which items have changed.', '6 replies', [['💡', '15'], ['👍', '8']]],
+    ['MR', 'Michael Rodriguez', '45 min ago', 'Just completed my first full-stack project! Thanks to everyone who helped me along the way. The mentorship here is incredible! 🔥', '8 replies', [['🔥', '22'], ['🎉', '14']]],
+    ['EJ', 'Emily Johnson', '30 min ago', "Does anyone have recommendations for CSS Grid resources? I'm struggling with the gallery layout assignment. Any help would be appreciated! 🙏", '4 replies', [['❤️', '5']]],
+    ['DK', 'David Kim', '15 min ago', "Pro tip: Use Front-End Development Program DevTools to debug your components. It's a game changer for understanding component state and props!", '3 replies', [['💡', '10'], ['👍', '6']]],
   ]
 
   return (
@@ -259,17 +259,20 @@ function DetailView({ onBack }) {
           <div className="conversation">
             <div className="conversation-head"><strong>#　general</strong><span>•　General community discussions</span><b>⌕</b></div>
             <div className="posts">
-              {posts.map(([initial, author, time, content, replies]) => (
+              {posts.map(([initial, author, time, content, replies, reactions], index) => (
                 <article className="post" key={`${author}-${time}`}>
                   <span className="avatar small">{initial}</span>
                   <div>
+                    {index === 0 && <div className="pinned-label">📌　Pinned by you</div>}
                     <header><strong>{author}</strong><small>{time}</small></header>
                     <p>{content}</p>
-                    <div className="reactions"><span>{replies}</span></div>
+                    <div className="reactions">{reactions.map(([emoji, count]) => <span className="reaction-chip" key={emoji}>{emoji} <small>{count}</small></span>)}<span className="reaction-add">☺</span></div>
+                    <a href="#replies" className="reply-link"><svg className="reply-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 6.5C5 5.67 5.67 5 6.5 5H17.5C18.33 5 19 5.67 19 6.5V13.5C19 14.33 18.33 15 17.5 15H10L6 18V15.5C5.45 15.28 5 14.74 5 14V6.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>{replies}</a>
                   </div>
                 </article>
               ))}
             </div>
+            <div className="message-box"><span className="avatar small">YO</span><input placeholder="Message #general" /><span className="composer-icon">⌕</span><span className="composer-icon">☺</span><button type="button">➤</button></div>
           </div>
         </div>
       </section>
@@ -386,7 +389,7 @@ function App() {
         <section className="content">
           <CommunityHeader setTab={setTab} tab={tab} />
           {tab === 'overview' && <Overview />}
-          {tab === 'channels' && <Channels onCreateChannel={() => setCreateChannelPage(true)} />}
+          {tab === 'channels' && <Channels onCreateChannel={() => setCreateChannelPage(true)} onOpenChannel={() => setDetail(true)} />}
           {tab === 'members' && <Members />}
         </section>
       </main>
