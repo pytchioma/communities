@@ -86,7 +86,11 @@ function CommunityList({ onOpen, onCreate }) {
 }
 
 function CommunityHeader({ setTab, tab }) {
-  return <><div className="community-header"><span className="community-icon large">💻</span><div><h1>Frontend Engineering</h1><p>342 members • 8 channels</p></div><span className="more">⋮</span></div><div className="tabs"><button className={tab === 'overview' ? 'selected' : ''} onClick={() => setTab('overview')}><TabIcon name="overview" />Overview</button><button className={tab === 'channels' ? 'selected' : ''} onClick={() => setTab('channels')}><TabIcon name="channels" />Channels</button><button className={tab === 'members' ? 'selected' : ''} onClick={() => setTab('members')}>♧　Members</button></div></>
+  return <><div className="community-header"><span className="community-icon large">💻</span><div><h1>Frontend Engineering</h1><p>342 members • 8 channels</p></div><span className="more">⋮</span></div><div className="tabs"><button className={tab === 'overview' ? 'selected' : ''} onClick={() => setTab('overview')}><TabIcon name="overview" />Overview</button><button className={tab === 'channels' ? 'selected' : ''} onClick={() => setTab('channels')}><TabIcon name="channels" />Channels</button><button className={tab === 'members' ? 'selected' : ''} onClick={() => setTab('members')}><ReferenceMembersIcon />Members</button></div></>
+}
+
+function ReferenceMembersIcon() {
+  return <svg className="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="8.5" cy="7" r="3" stroke="currentColor" strokeWidth="1.8" /><path d="M2.5 19C2.5 15.6 5.2 13 8.5 13C11.8 13 14.5 15.6 14.5 19" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /><path d="M15 5.5C17.6 5.7 19.5 7.6 19.5 10C19.5 11.8 18.5 13.2 17 14M16.5 17C18.1 17.4 19.3 18.1 20.5 19" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
 }
 
 function TabIcon({ name }) {
@@ -244,14 +248,14 @@ function DetailView({ onBack }) {
 
   return (
     <div className="detail-page">
-      <button className="back" onClick={onBack}>← Back</button>
+      <button className="back" onClick={onBack} aria-label="Back">←</button>
       <section className="detail-card">
         <div className="detail-intro">
           <span className="program-icon">⚛</span>
           <div>
             <h1>Front-End Development Program Developers Hub</h1>
             <p>A community for Front-End Development Program developers to share knowledge, best practices, and latest updates</p>
-            <small><TabIcon name="members" /> 15,420 members　 <b>Programming</b></small>
+            <div className="community-meta" style={{ display: 'flex', alignItems: 'center', flexWrap: 'nowrap', width: 'max-content', maxWidth: '100%', lineHeight: 1 }}><span style={{ display: 'flex', width: 18, height: 18, flex: '0 0 18px', marginRight: 8 }}><ReferenceMembersIcon /></span><span className="community-member-count" style={{ whiteSpace: 'nowrap', fontSize: 14, color: '#68748a' }}>15,420 members</span><span className="community-programming" style={{ display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', marginLeft: 24, padding: '6px 14px', borderRadius: 999, background: '#eef0f4', color: '#172238', fontSize: 14, fontWeight: 400 }}>Programming</span></div>
           </div>
         </div>
         <div className="detail-body">
