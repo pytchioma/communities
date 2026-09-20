@@ -8,11 +8,11 @@ const navItems = [
 ]
 
 const communities = [
-  { icon: '▰', name: 'Frontend Engineering', members: '342', channels: '8' },
-  { icon: '▥', name: 'Data Science', members: '287', channels: '6' },
+  { icon: '💻', name: 'Frontend Engineering', members: '342', channels: '8' },
+  { icon: '📊', name: 'Data Science', members: '287', channels: '6' },
   { icon: '🎨', name: 'UX Design', members: '198', channels: '5' },
-  { icon: '⚙', name: 'Backend Development', members: '256', channels: '7' },
-  { icon: '▥', name: 'Mobile Development', members: '145', channels: '4' },
+  { icon: '⚙️', name: 'Backend Development', members: '256', channels: '7' },
+  { icon: '📱', name: 'Mobile Development', members: '145', channels: '4' },
 ]
 
 const channelRows = [
@@ -28,7 +28,7 @@ const members = [
 ]
 
 function Logo() {
-  return <div className="brand"><span className="brand-mark"><i /><b /></span><span><strong>Talent</strong><em>Cona</em></span></div>
+  return <div className="brand"><span className="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><defs><linearGradient id="logoGradient" x1="7" y1="5" x2="40" y2="43" gradientUnits="userSpaceOnUse"><stop stopColor="#241996" /><stop offset="0.55" stopColor="#5033b6" /><stop offset="1" stopColor="#0ba9d2" /></linearGradient></defs><circle cx="24" cy="24" r="21" stroke="url(#logoGradient)" strokeWidth="2" /><circle cx="24" cy="24" r="16" stroke="url(#logoGradient)" strokeWidth="1.8" /><circle cx="24" cy="24" r="11" stroke="url(#logoGradient)" strokeWidth="1.8" /><path d="M24 13C30.1 13 35 17.5 35 23.2C35 28.9 30.1 33 24 33C17.9 33 13 28.9 13 23.2C13 18.2 17.1 15.2 21.5 15.2C25.9 15.2 29 18.2 29 21.8C29 25.4 26.3 27.5 23.5 27.5C20.7 27.5 19 25.8 19 23.7C19 21.6 20.5 20.2 22.2 20.2" stroke="url(#logoGradient)" strokeWidth="1.8" strokeLinecap="round" /><circle cx="22" cy="21" r="3.2" fill="#e5a326" /></svg></span><span><strong>Talent</strong><em>Cona</em></span></div>
 }
 
 function BellIcon() {
@@ -74,17 +74,45 @@ function Sidebar() {
 }
 
 function CommunityList({ onOpen, onCreate }) {
-  return <section className="community-list"><div className="list-heading"><h2>Communities</h2><label className="search"><span>⌕</span><input placeholder="Search communities..." /></label></div><div className="community-items">{communities.map((community, index) => <button className={`community-item ${index === 0 ? 'selected' : ''}`} key={community.name} onDoubleClick={onOpen}><span className="community-icon">{community.icon}</span><span className="community-copy"><strong>{community.name}</strong><small>♧ {community.members}　# {community.channels}</small><em>Active</em></span></button>)}</div><button className="create-button" onClick={onCreate}>♧ Create Communities</button></section>
+  return <section className="community-list"><div className="list-heading"><h2>Communities</h2><label className="search"><span>⌕</span><input placeholder="Search communities..." /></label></div><div className="community-items">{communities.map((community, index) => <button className={`community-item ${index === 0 ? 'selected' : ''}`} key={community.name} onDoubleClick={onOpen}><span className="community-icon">{community.icon}</span><span className="community-copy"><strong>{community.name}</strong><small><TabIcon name="members" /> {community.members}<TabIcon name="channels" /> {community.channels}</small><em>Active</em></span></button>)}</div><button className="create-button" onClick={onCreate}><TabIcon name="create-community" />Create Communities</button></section>
 }
 
 function CommunityHeader({ setTab, tab }) {
-  return <><div className="community-header"><span className="community-icon large">💻</span><div><h1>Frontend Engineering</h1><p>342 members • 8 channels</p></div><span className="more">⋮</span></div><div className="tabs"><button className={tab === 'overview' ? 'selected' : ''} onClick={() => setTab('overview')}>∿　Overview</button><button className={tab === 'channels' ? 'selected' : ''} onClick={() => setTab('channels')}>#　Channels</button><button className={tab === 'members' ? 'selected' : ''} onClick={() => setTab('members')}>♧　Members</button></div></>
+  return <><div className="community-header"><span className="community-icon large">💻</span><div><h1>Frontend Engineering</h1><p>342 members • 8 channels</p></div><span className="more">⋮</span></div><div className="tabs"><button className={tab === 'overview' ? 'selected' : ''} onClick={() => setTab('overview')}><TabIcon name="overview" />Overview</button><button className={tab === 'channels' ? 'selected' : ''} onClick={() => setTab('channels')}><TabIcon name="channels" />Channels</button><button className={tab === 'members' ? 'selected' : ''} onClick={() => setTab('members')}><TabIcon name="members" />Members</button></div></>
+}
+
+function TabIcon({ name }) {
+  if (name === 'overview') {
+    return <svg className="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 13H6L8 6L12 18L15 10L17 13H21" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  }
+
+  if (name === 'members') {
+    return <svg className="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3" stroke="currentColor" strokeWidth="1.7" /><path d="M3.5 18C4.2 14.9 6 13.5 9 13.5C12 13.5 13.8 14.9 14.5 18" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /><path d="M15 6.5C16.7 6.7 18 8 18 9.5C18 11 16.9 12.2 15.4 12.4M16 14C18.4 14.4 19.8 15.7 20.5 18" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /></svg>
+  }
+
+  if (name === 'channels') {
+    return <svg className="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 4L7 20M17 4L15 20M4 9H20M3 15H19" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /></svg>
+  }
+
+  if (name === 'messages') {
+    return <svg className="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 6.5C5 5.7 5.7 5 6.5 5H17.5C18.3 5 19 5.7 19 6.5V14.5C19 15.3 18.3 16 17.5 16H10L6 19V16.5C5.4 16.3 5 15.7 5 15V6.5Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" /></svg>
+  }
+
+  if (name === 'flag') {
+    return <svg className="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 20V4M6 5C10 2.5 14 7.5 18 5V14C14 16.5 10 11.5 6 14" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  }
+
+  if (name === 'create-community') {
+    return <svg className="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3" stroke="currentColor" strokeWidth="1.7" /><path d="M3.5 18C4.2 14.9 6 13.5 9 13.5C12 13.5 13.8 14.9 14.5 18" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /><path d="M18 7V13M15 10H21" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /></svg>
+  }
+
+  return <svg className="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3" stroke="currentColor" strokeWidth="1.7" /><path d="M3.5 18C4.2 14.9 6 13.5 9 13.5C12 13.5 13.8 14.9 14.5 18" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /></svg>
 }
 
 function Overview() {
-  const stats = [['342', 'Total Members', '+12% this month', '♧', 'green'], ['1,240', 'Messages Today', 'Active', '▢', 'blue'], ['8', 'Active Channels', 'All operational', '#', 'teal'], ['3', 'Flagged Messages', 'Needs review', '⚐', 'red']]
+  const stats = [['342', 'Total Members', '+12% this month', 'members', 'green'], ['1,240', 'Messages Today', 'Active', 'messages', 'blue'], ['8', 'Active Channels', 'All operational', 'channels', 'teal'], ['3', 'Flagged Messages', 'Needs review', 'flag', 'red']]
 
-  return <><div className="stats">{stats.map(([value, label, note, icon, color]) => <div className="stat" key={label}><div><strong>{value}</strong><span>{label}</span><em className={color}>{note}</em></div><b className={color}>{icon}</b></div>)}</div><section className="activity"><h2>Recent Activity</h2>{[['J', 'John Doe posted in #general', '2 minutes ago'], ['J', 'Jane Smith joined the Communities', '15 minutes ago'], ['M', 'Mike Johnson posted in #help', '1 hour ago'], ['S', 'Sarah Wilson reacted to a message', '2 hours ago']].map(([initial, text, time]) => <div className="activity-row" key={text}><span className="avatar">{initial}</span><div><strong>{text}</strong><small>{time}</small></div></div>)}</section></>
+  return <><div className="stats">{stats.map(([value, label, note, icon, color]) => <div className={`stat ${label === 'Active Channels' ? 'stat-channels' : ''}`} key={label}><div><strong>{value}</strong><span>{label}</span><em className={color}>{note}</em></div><b className={color}><TabIcon name={icon} /></b></div>)}</div><section className="activity"><h2>Recent Activity</h2>{[['J', 'John Doe posted in #general', '2 minutes ago'], ['J', 'Jane Smith joined the Communities', '15 minutes ago'], ['M', 'Mike Johnson posted in #help', '1 hour ago'], ['S', 'Sarah Wilson reacted to a message', '2 hours ago']].map(([initial, text, time]) => <div className="activity-row" key={text}><span className="avatar">{initial}</span><div><strong>{text}</strong><small>{time}</small></div></div>)}</section></>
 }
 
 function Channels({ onCreateChannel }) {
@@ -119,7 +147,31 @@ function UploadImageIcon() {
   return <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2" stroke="currentColor" strokeWidth="1.8" /><path d="M7.5 15.5L10.8 12.2L13.2 14.6L16.8 11L18.5 12.7V18.5H7.5V15.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /><circle cx="9.5" cy="9.5" r="1.5" stroke="currentColor" strokeWidth="1.8" /></svg>
 }
 
+function ManageMemberPanel({ member, onClose }) {
+  return (
+    <div className="manage-panel-backdrop" onClick={onClose}>
+      <section className="manage-panel" onClick={(event) => event.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="manage-member-title">
+        <div className="manage-panel-header">
+          <h2 id="manage-member-title">Manage Member</h2>
+          <button type="button" className="manage-panel-close" onClick={onClose} aria-label="Close">x</button>
+        </div>
+        <div className="managed-member">
+          <span className="avatar managed-member-avatar">{member[0]}</span>
+          <span><strong>{member[1]}</strong><small>{member[2]}</small></span>
+        </div>
+        <div className="manage-panel-actions">
+          <button type="button" className="member-action mute">Mute Member</button>
+          <button type="button" className="member-action suspend">Suspend Member</button>
+          <button type="button" className="member-action remove">Remove from Community</button>
+        </div>
+      </section>
+    </div>
+  )
+}
+
 function Members() {
+  const [managedMember, setManagedMember] = useState(null)
+
   return (
     <>
       <div className="section-title members-title">
@@ -129,7 +181,7 @@ function Members() {
           <button className="select"><span>All Statuses</span><DropdownIcon /></button>
         </div>
       </div>
-      <MemberTable />
+      <MemberTable onManage={setManagedMember} />
       <div className="pending"><span>Pending Reviews</span></div>
       <div className="table review-table">
         <div className="table-head"><span>MEMBER</span><span>REQUEST SENT</span><span>PROGRAM</span><span>ACTIONS</span></div>
@@ -148,11 +200,12 @@ function Members() {
           </div>
         ))}
       </div>
+      {managedMember && <ManageMemberPanel member={managedMember} onClose={() => setManagedMember(null)} />}
     </>
   )
 }
 
-function MemberTable() {
+function MemberTable({ onManage }) {
   return (
     <div className="table member-table">
       <div className="table-head"><span>MEMBER</span><span>JOIN DATE</span><span>MESSAGES</span><span>STATUS</span><span>ACTIONS</span></div>
@@ -165,7 +218,7 @@ function MemberTable() {
           <span>{date}</span>
           <span>{messages}</span>
           <span className={`status ${status === 'active' ? '' : 'suspended'}`}>{status}</span>
-          <button className="manage"><ManageIcon /> Manage</button>
+          <button type="button" className="manage" onClick={() => onManage(members[index])}><ManageIcon /> Manage</button>
         </div>
       ))}
     </div>
