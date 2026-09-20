@@ -253,7 +253,7 @@ function DetailView({ onBack }) {
           <aside className="channel-nav">
             <small>CHANNELS</small>
             {['general', 'announcements', 'help-support', 'showcase', 'resources', 'off-topic'].map((channel, index) => (
-              <button className={index === 0 ? 'active' : ''} key={channel}>#　{channel}{index === 1 && <i>2</i>}{index === 2 && <i>5</i>}</button>
+              <button className={index === 0 ? 'active' : ''} key={channel}><span className="channel-label">#　{channel}</span>{index === 1 && <i aria-label="2 unread messages">2</i>}{index === 2 && <i aria-label="5 unread messages">5</i>}</button>
             ))}
           </aside>
           <div className="conversation">

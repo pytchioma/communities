@@ -124,21 +124,28 @@ button { border:0; cursor:pointer; }
 .member-filters { width:100%; }
 .member-filters .search { flex:1; width:auto; }
 .pending { margin:16px 12px; }
-.detail-intro { height:auto; align-items:flex-start; padding:18px; }
-.program-icon { width:48px; height:48px; font-size:26px; }
-.detail-intro h1 { font-size:18px; }
-.detail-intro p { font-size:12px; line-height:1.5; }
+.detail-intro { height:auto; align-items:flex-start; padding:20px 18px; gap:14px; }
+.program-icon { width:52px; height:52px; flex:0 0 52px; font-size:26px; }
+.detail-intro > div { min-width:0; flex:1; }
+.detail-intro h1 { font-size:18px; line-height:1.25; overflow-wrap:break-word; }
+.detail-intro p { font-size:12px; line-height:1.55; margin-top:8px; }
+.detail-intro small { display:block; margin-top:10px; line-height:1.5; }
 .detail-body { display:block; }
 .channel-nav { width:100%; border-right:0; border-bottom:1px solid var(--line); padding:14px; display:flex; gap:6px; overflow-x:auto; }
 .channel-nav>small { display:none; }
 .channel-nav button { flex:0 0 auto; width:auto; margin-top:0; height:36px; font-size:12px; }
-.conversation-head { padding:0 18px; }
+.conversation-head { height:auto; min-height:58px; padding:14px 18px; align-items:flex-start; flex-wrap:wrap; }
 .conversation-head span { display:none; }
-.posts { padding:17px 18px; }
+.conversation-head b { margin-left:auto; }
+.posts { padding:20px 18px; }
 .post { gap:10px; }
 .post p { font-size:13px; line-height:1.55; }
-.message-box { padding:0 18px; gap:8px; }
+.message-box { padding:12px 18px; gap:8px; min-height:80px; }
+.message-box input { min-width:0; }
 .message-box>span:last-child { font-size:0; }
+.channel-nav button { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.channel-label { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.channel-nav i { display:inline-flex; align-items:center; justify-content:center; flex:0 0 20px; width:20px; height:20px; margin-left:auto; font-size:11px; line-height:1; }
 .message-box button { font-size:16px; }
 .field-group input, .field-group textarea { font-size:16px; }
 .upload-zone { height:180px; }
