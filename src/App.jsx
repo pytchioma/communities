@@ -32,9 +32,12 @@ function Logo() {
 }
 
 function BellIcon() {
-  return <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 18.5H14M7.5 9.5C7.5 7.29086 9.29086 5.5 11.5 5.5H12.5C14.7091 5.5 16.5 7.29086 16.5 9.5V13.2L18 16.5H6L7.5 13.2V9.5Z" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /><path d="M9.5 18.5C9.8 19.3 10.7 19.8 12 19.8C13.3 19.8 14.2 19.3 14.5 18.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /></svg>
+  return <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5.5 16.7H18.5L16.7 13V9.4C16.7 6.8 14.7 4.7 12 4.7C9.3 4.7 7.3 6.8 7.3 9.4V13L5.5 16.7Z" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" /><path d="M9.5 19.1C10 20.1 10.8 20.6 12 20.6C13.2 20.6 14 20.1 14.5 19.1" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" /></svg>
 }
 
+function ProfileIcon() {
+  return <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#a5a1a6" /><path d="M5.5 40C7.3 32.1 12.1 27.7 20 27.7C27.9 27.7 32.7 32.1 34.5 40H5.5Z" fill="#505158" /><path d="M13.4 17.1C13.4 11.2 16 7.2 20.8 7.2C25.8 7.2 27.8 11.3 27 17.6L25.8 23.1C24.9 26.3 22.8 28.2 20 28.2C17.2 28.2 15.1 26.3 14.2 23.1L13.4 17.1Z" fill="#85533f" /><path d="M13.3 16.8C13.3 10.9 16.2 6.2 21 6.2C25.8 6.2 28.2 10 27.2 16C25.6 13.6 23.8 12.1 20.8 11.9C18 11.7 15.9 13.4 13.3 16.8Z" fill="#29292d" /><path d="M14.8 24.2C16.2 26.9 18 28.2 20 28.2C22 28.2 23.8 26.9 25.2 24.2C24.2 25.1 22.6 25.7 20 25.7C17.4 25.7 15.8 25.1 14.8 24.2Z" fill="#754433" /><ellipse cx="17.3" cy="18.5" rx=".9" ry=".7" fill="#17171a" /><ellipse cx="22.7" cy="18.5" rx=".9" ry=".7" fill="#17171a" /><path d="M17.1 22.2C18.8 23.3 21.2 23.3 22.9 22.2" stroke="#512e28" strokeWidth=".8" strokeLinecap="round" /></svg>
+}
 function Icon({ name }) {
   const props = { viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg', 'aria-hidden': 'true' }
   const common = { stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' }
@@ -66,7 +69,7 @@ function Icon({ name }) {
 }
 
 function Header() {
-  return <header className="topbar"><Logo /><div className="top-actions"><span className="bell"><BellIcon /></span><span className="avatar photo">S</span></div></header>
+  return <header className="topbar"><Logo /><div className="top-actions"><span className="bell"><BellIcon /></span><span className="avatar photo"><ProfileIcon /></span></div></header>
 }
 
 function Sidebar() {
