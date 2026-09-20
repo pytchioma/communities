@@ -87,8 +87,8 @@ function Overview() {
   return <><div className="stats">{stats.map(([value, label, note, icon, color]) => <div className="stat" key={label}><div><strong>{value}</strong><span>{label}</span><em className={color}>{note}</em></div><b className={color}>{icon}</b></div>)}</div><section className="activity"><h2>Recent Activity</h2>{[['J', 'John Doe posted in #general', '2 minutes ago'], ['J', 'Jane Smith joined the Communities', '15 minutes ago'], ['M', 'Mike Johnson posted in #help', '1 hour ago'], ['S', 'Sarah Wilson reacted to a message', '2 hours ago']].map(([initial, text, time]) => <div className="activity-row" key={text}><span className="avatar">{initial}</span><div><strong>{text}</strong><small>{time}</small></div></div>)}</section></>
 }
 
-function Channels() {
-  return <><div className="section-title"><h2>Channel Management</h2><button className="primary">#　Create Channel</button></div><div className="table channel-table"><div className="table-head"><span>CHANNEL</span><span>MEMBERS</span><span>MESSAGES</span><span>STATUS</span><span>ACTIONS</span></div>{channelRows.map(([name, description, memberCount, messageCount, active]) => <div className="table-row" key={name}><div><strong>#　{name}</strong><small>{description}</small></div><span>{memberCount}</span><span>{messageCount}</span><span className={`status ${active ? '' : 'inactive'}`}>{active ? 'Active' : 'Inactive'}</span><b>⋮</b></div>)}</div></>
+function Channels({ onCreateChannel }) {
+  return <><div className="section-title"><h2>Channel Management</h2><button className="primary" onClick={onCreateChannel}>#　Create Channel</button></div><div className="table channel-table"><div className="table-head"><span>CHANNEL</span><span>MEMBERS</span><span>MESSAGES</span><span>STATUS</span><span>ACTIONS</span></div>{channelRows.map(([name, description, memberCount, messageCount, active]) => <div className="table-row" key={name}><div><strong>#　{name}</strong><small>{description}</small></div><span>{memberCount}</span><span>{messageCount}</span><span className={`status ${active ? '' : 'inactive'}`}>{active ? 'Active' : 'Inactive'}</span><b>⋮</b></div>)}</div></>
 }
 
 function MemberAvatar({ tone = 'purple' }) {
@@ -263,10 +263,51 @@ function CommunityCreatePage({ onBack }) {
   )
 }
 
+function ChannelCreatePage({ onBack }) {
+  return (
+    <main className="create-community-page">
+      <div className="create-page-shell">
+        <div className="create-page-header">
+          <button type="button" className="page-back" onClick={onBack} aria-label="Back">←</button>
+          <h1>Create Channel</h1>
+        </div>
+
+        <div className="create-page-card">
+          <div className="create-page-form">
+            <label className="field-group">
+              <span>Channel Name <em>*</em></span>
+              <input type="text" placeholder="design-team" />
+            </label>
+
+            <label className="field-group">
+              <span>Description <em>*</em></span>
+              <textarea rows="3" placeholder="Brief description of the channel" />
+            </label>
+
+            <div className="field-group">
+              <span>Channel Type</span>
+              <select className="field-select" defaultValue="public">
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="create-page-actions">
+            <button type="button" className="modal-cancel" onClick={onBack}>Cancel</button>
+            <button type="button" className="modal-submit">Create Channel</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  )
+}
+
 function App() {
   const [tab, setTab] = useState('overview')
   const [detail, setDetail] = useState(false)
   const [createPage, setCreatePage] = useState(false)
+  const [createChannelPage, setCreateChannelPage] = useState(false)
 
   if (detail) {
     return <><Header /><Sidebar /><DetailView onBack={() => setDetail(false)} /></>
@@ -274,6 +315,10 @@ function App() {
 
   if (createPage) {
     return <><Header /><Sidebar /><CommunityCreatePage onBack={() => setCreatePage(false)} /></>
+  }
+
+  if (createChannelPage) {
+    return <><Header /><Sidebar /><ChannelCreatePage onBack={() => setCreateChannelPage(false)} /></>
   }
 
   return (
@@ -285,7 +330,7 @@ function App() {
         <section className="content">
           <CommunityHeader setTab={setTab} tab={tab} />
           {tab === 'overview' && <Overview />}
-          {tab === 'channels' && <Channels />}
+          {tab === 'channels' && <Channels onCreateChannel={() => setCreateChannelPage(true)} />}
           {tab === 'members' && <Members />}
         </section>
       </main>

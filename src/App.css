@@ -36,9 +36,10 @@ button { border:0; cursor:pointer; }
 .field-group { display:flex; flex-direction:column; gap:10px; }
 .field-group > span { font-size:18px; font-weight:600; color:#1f2a3a; }
 .field-group em { color:#d33a3a; font-style:normal; }
-.field-group input, .field-group textarea { width:100%; border:1px solid #d8dde4; border-radius:12px; background:#f9f9f9; color:#1b2435; padding:16px 18px; font-size:18px; box-sizing:border-box; }
+.field-group input, .field-group textarea, .field-select { width:100%; border:1px solid #d8dde4; border-radius:12px; background:#f9f9f9; color:#1b2435; padding:16px 18px; font-size:18px; box-sizing:border-box; }
 .field-group input { height:56px; }
 .field-group textarea { min-height:58px; resize:none; }
+.field-select { height:56px; appearance:none; background-image: linear-gradient(45deg, transparent 50%, #1e2b3d 50%), linear-gradient(135deg, #1e2b3d 50%, transparent 50%); background-position: calc(100% - 20px) calc(50% - 3px), calc(100% - 14px) calc(50% - 3px); background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; }
 .upload-zone { height:236px; border:2px dashed #d0d7e0; border-radius:16px; background:#fafafa; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#22304a; gap:10px; font-weight:600; position:relative; cursor:pointer; overflow:hidden; }
 .upload-zone svg { width:62px; height:62px; color:#1e2b3d; }
 .upload-zone strong { font-size:18px; }
