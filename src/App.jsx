@@ -2,7 +2,7 @@
 import './App.css'
 
 const navItems = [
-  ['dashboard', 'Dashboard'], ['users', 'User Management'], ['users', 'Admin Management'], ['folder', 'Admissions & Routing'],
+  ['dashboard', 'Dashboard'], ['users', 'User Management'], ['admin', 'Admin Management'], ['admission', 'Admissions & Routing'],
   ['programs', 'Manage Programs'], ['spark', 'Talent Corner'], ['wallet', 'Financial Ops'], ['laptop', 'Laptops'], ['communities', 'Communities'],
   ['share', 'Referrals'], ['chart', 'Reports & Insights'],
 ]
@@ -47,6 +47,11 @@ function Icon({ name }) {
       return <svg {...props}><rect x="4" y="4" width="7" height="7" rx="1.2" {...common} /><rect x="13" y="4" width="7" height="4" rx="1.2" {...common} /><rect x="13" y="10" width="7" height="10" rx="1.2" {...common} /><rect x="4" y="13" width="7" height="7" rx="1.2" {...common} /></svg>
     case 'users':
       return <svg {...props}><path d="M9 12.5C10.7 12.5 12.1 11.1 12.1 9.4C12.1 7.7 10.7 6.3 9 6.3C7.3 6.3 5.9 7.7 5.9 9.4C5.9 11.1 7.3 12.5 9 12.5Z" {...common} /><path d="M15.5 9.5C16.6 9.5 17.5 8.6 17.5 7.5C17.5 6.4 16.6 5.5 15.5 5.5C14.4 5.5 13.5 6.4 13.5 7.5" {...common} /><path d="M4 17.5C5 15.8 6.8 14.8 9 14.8C11.2 14.8 13 15.8 14 17.5" {...common} /><path d="M15 17.5C15.4 16.5 16.3 15.7 17.5 15.2" {...common} /></svg>
+      return <svg {...props}><circle cx="9" cy="8" r="3" {...common} /><path d="M3.5 18C4.2 14.9 6 13.5 9 13.5C12 13.5 13.8 14.9 14.5 18" {...common} /></svg>
+    case 'admin':
+      return <svg {...props}><circle cx="9" cy="8" r="3" {...common} /><path d="M3.5 18C4.2 14.9 6 13.5 9 13.5C12 13.5 13.8 14.9 14.5 18" {...common} /><path d="M17 14V20M14 17H20" {...common} /></svg>
+    case 'admission':
+      return <svg {...props}><path d="M5 4.5H15L19 8.5V19.5H5V4.5Z" {...common} /><path d="M15 4.5V8.5H19M8 13L10.5 15.5L16 10" {...common} /></svg>
     case 'folder':
       return <svg {...props}><path d="M5 4.5H15L19 8.5V19.5H5V4.5Z" {...common} /><path d="M15 4.5V8.5H19M8 13L10.5 15.5L16 10" {...common} /></svg>
     case 'programs':
@@ -60,7 +65,7 @@ function Icon({ name }) {
     case 'communities':
       return <svg {...props}><path d="M9 11C10.6569 11 12 9.65685 12 8C12 6.34315 10.6569 5 9 5C7.34315 5 6 6.34315 6 8C6 9.65685 7.34315 11 9 11Z" {...common} /><path d="M16 11C17.1046 11 18 10.1046 18 9C18 7.89543 17.1046 7 16 7C14.8954 7 14 7.89543 14 9C14 10.1046 14.8954 11 16 11Z" {...common} /><path d="M5.5 17.2C6.5 15.8 7.9 15 9.5 15C11.1 15 12.5 15.8 13.5 17.2" {...common} /><path d="M13.8 17.2C14.3 16.3 15.2 15.6 16.4 15.3" {...common} /></svg>
     case 'share':
-      return <svg {...props}><path d="M4 7H17M4 7L8 3M4 7L8 11M20 17H7M20 17L16 13M20 17L16 21" {...common} /></svg>
+      return <svg {...props}><path d="M8 12L16 6" {...common} /><path d="M8 12L16 18" {...common} /><circle cx="5" cy="12" r="2" {...common} /><circle cx="19" cy="6" r="2" {...common} /><circle cx="19" cy="18" r="2" {...common} /></svg>
     case 'chart':
       return <svg {...props}><rect x="4" y="4" width="16" height="16" rx="1.5" {...common} /><path d="M7 16L10 12.5L12.5 15L16.5 9.5" {...common} /><path d="M15 9.5H16.5V11" {...common} /></svg>
     default:
@@ -81,7 +86,7 @@ function CommunityList({ onOpen, onCreate }) {
 }
 
 function CommunityHeader({ setTab, tab }) {
-  return <><div className="community-header"><span className="community-icon large">💻</span><div><h1>Frontend Engineering</h1><p>342 members • 8 channels</p></div><span className="more">⋮</span></div><div className="tabs"><button className={tab === 'overview' ? 'selected' : ''} onClick={() => setTab('overview')}><TabIcon name="overview" />Overview</button><button className={tab === 'channels' ? 'selected' : ''} onClick={() => setTab('channels')}><TabIcon name="channels" />Channels</button><button className={tab === 'members' ? 'selected' : ''} onClick={() => setTab('members')}><TabIcon name="members" />Members</button></div></>
+  return <><div className="community-header"><span className="community-icon large">💻</span><div><h1>Frontend Engineering</h1><p>342 members • 8 channels</p></div><span className="more">⋮</span></div><div className="tabs"><button className={tab === 'overview' ? 'selected' : ''} onClick={() => setTab('overview')}><TabIcon name="overview" />Overview</button><button className={tab === 'channels' ? 'selected' : ''} onClick={() => setTab('channels')}><TabIcon name="channels" />Channels</button><button className={tab === 'members' ? 'selected' : ''} onClick={() => setTab('members')}>♧　Members</button></div></>
 }
 
 function TabIcon({ name }) {
@@ -246,7 +251,7 @@ function DetailView({ onBack }) {
           <div>
             <h1>Front-End Development Program Developers Hub</h1>
             <p>A community for Front-End Development Program developers to share knowledge, best practices, and latest updates</p>
-            <small>♧ 15,420 members　 <b>Programming</b></small>
+            <small><TabIcon name="members" /> 15,420 members　 <b>Programming</b></small>
           </div>
         </div>
         <div className="detail-body">

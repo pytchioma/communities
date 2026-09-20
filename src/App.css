@@ -130,6 +130,7 @@ button { border:0; cursor:pointer; }
 .detail-intro h1 { font-size:18px; line-height:1.25; overflow-wrap:break-word; }
 .detail-intro p { font-size:12px; line-height:1.55; margin-top:8px; }
 .detail-intro small { display:block; margin-top:10px; line-height:1.5; }
+.detail-intro small .tab-icon { width:15px; height:15px; vertical-align:middle; }
 .detail-body { display:block; }
 .channel-nav { width:100%; border-right:0; border-bottom:1px solid var(--line); padding:14px; display:flex; gap:6px; overflow-x:auto; }
 .channel-nav>small { display:none; }
